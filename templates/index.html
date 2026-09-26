@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ritmo Mental | Treino de aritmética</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Ritmo Mental, início">RITMO<span>/</span>MENTAL</a>
+      <div class="session-label"><span class="live-dot"></span> sessão de foco</div>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">ARITMÉTICA BÁSICA <span>///</span> 03:00</p>
+      <h1 id="page-title">Pense rápido.<br><em>Calcule melhor.</em></h1>
+      <p class="intro-copy">Uma sequência curta para aquecer a mente. Resolva o máximo que conseguir com precisão.</p>
+    </section>
+
+    <section class="stats" aria-label="Estatísticas da sessão">
+      <div class="stat"><span class="stat-label">TEMPO</span><strong id="timer">03:00</strong></div>
+      <div class="stat"><span class="stat-label">ACERTOS</span><strong id="correct-count">0</strong></div>
+      <div class="stat"><span class="stat-label">PRECISÃO</span><strong id="accuracy">--%</strong></div>
+      <div class="stat"><span class="stat-label">RITMO</span><strong id="speed">-- <small>cpm</small></strong></div>
+    </section>
+
+    <section class="game-panel" aria-live="polite">
+      <div class="panel-heading"><span id="progress-label">PRONTO?</span><span id="problem-number">#01</span></div>
+      <div class="problem-area">
+        <div id="question" class="question">—</div>
+        <div class="answer-row">
+          <label class="sr-only" for="answer">Sua resposta</label>
+          <input id="answer" type="number" inputmode="numeric" autocomplete="off" placeholder="sua resposta" disabled>
+          <button id="submit" class="submit-button" type="button" disabled>ENVIAR <span>↵</span></button>
+        </div>
+        <p id="feedback" class="feedback" role="status">Clique em começar para iniciar.</p>
+      </div>
+      <button id="start" class="start-button" type="button">COMEÇAR TREINO <span>→</span></button>
+    </section>
+
+    <section id="results" class="results" hidden>
+      <div>
+        <p class="eyebrow">SESSÃO ENCERRADA</p>
+        <h2>Seu resultado</h2>
+      </div>
+      <div class="result-grid">
+        <div><strong id="final-correct">0</strong><span>acertos</span></div>
+        <div><strong id="final-wrong">0</strong><span>erros</span></div>
+        <div><strong id="final-speed">0</strong><span>cálculos / min</span></div>
+      </div>
+      <button id="restart" class="outline-button" type="button">TENTAR NOVAMENTE <span>↗</span></button>
+    </section>
+
+    <footer><span>treino curto · progresso real</span><span>ritmo mental / 001</span></footer>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
