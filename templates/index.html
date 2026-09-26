@@ -1,63 +1,21 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ritmo Mental | Treino de aritmética</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ritmo Mental | Treino de cálculo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-  <main class="app-shell">
-    <header class="topbar">
-      <a class="brand" href="/" aria-label="Ritmo Mental, início">RITMO<span>/</span>MENTAL</a>
-      <div class="session-label"><span class="live-dot"></span> sessão de foco</div>
-    </header>
-
-    <section class="intro" aria-labelledby="page-title">
-      <p class="eyebrow">ARITMÉTICA BÁSICA <span>///</span> 03:00</p>
-      <h1 id="page-title">Pense rápido.<br><em>Calcule melhor.</em></h1>
-      <p class="intro-copy">Uma sequência curta para aquecer a mente. Resolva o máximo que conseguir com precisão.</p>
-    </section>
-
-    <section class="stats" aria-label="Estatísticas da sessão">
-      <div class="stat"><span class="stat-label">TEMPO</span><strong id="timer">03:00</strong></div>
-      <div class="stat"><span class="stat-label">ACERTOS</span><strong id="correct-count">0</strong></div>
-      <div class="stat"><span class="stat-label">PRECISÃO</span><strong id="accuracy">--%</strong></div>
-      <div class="stat"><span class="stat-label">RITMO</span><strong id="speed">-- <small>cpm</small></strong></div>
-    </section>
-
-    <section class="game-panel" aria-live="polite">
-      <div class="panel-heading"><span id="progress-label">PRONTO?</span><span id="problem-number">#01</span></div>
-      <div class="problem-area">
-        <div id="question" class="question">—</div>
-        <div class="answer-row">
-          <label class="sr-only" for="answer">Sua resposta</label>
-          <input id="answer" type="number" inputmode="numeric" autocomplete="off" placeholder="sua resposta" disabled>
-          <button id="submit" class="submit-button" type="button" disabled>ENVIAR <span>↵</span></button>
-        </div>
-        <p id="feedback" class="feedback" role="status">Clique em começar para iniciar.</p>
-      </div>
-      <button id="start" class="start-button" type="button">COMEÇAR TREINO <span>→</span></button>
-    </section>
-
-    <section id="results" class="results" hidden>
-      <div>
-        <p class="eyebrow">SESSÃO ENCERRADA</p>
-        <h2>Seu resultado</h2>
-      </div>
-      <div class="result-grid">
-        <div><strong id="final-correct">0</strong><span>acertos</span></div>
-        <div><strong id="final-wrong">0</strong><span>erros</span></div>
-        <div><strong id="final-speed">0</strong><span>cálculos / min</span></div>
-      </div>
-      <button id="restart" class="outline-button" type="button">TENTAR NOVAMENTE <span>↗</span></button>
-    </section>
-
-    <footer><span>treino curto · progresso real</span><span>ritmo mental / 001</span></footer>
-  </main>
-  <script src="{{ url_for('static', filename='app.js') }}"></script>
-</body>
-</html>
+<body><main class="app-shell">
+  <header class="topbar"><a class="brand" href="/">RITMO<span>/</span>MENTAL</a><div class="session-label"><span class="live-dot"></span> sessão de foco</div></header>
+  <section id="setup" class="intro"><p class="eyebrow">TREINO DE CÁLCULO <span>///</span> CONFIGURE</p><h1 id="page-title">Pense rápido.<br><em>Calcule melhor.</em></h1><p class="intro-copy">Escolha o tempo e o domínio numérico. Resolva o máximo que conseguir com precisão.</p>
+    <div class="options"><fieldset><legend>DURAÇÃO</legend><div class="option-grid"><label><input type="radio" name="duration" value="60"><span>01:00<small>relâmpago</small></span></label><label><input type="radio" name="duration" value="180" checked><span>03:00<small>padrão</small></span></label><label><input type="radio" name="duration" value="300"><span>05:00<small>completo</small></span></label><label><input type="radio" name="duration" value="600"><span>10:00<small>resistência</small></span></label></div></fieldset>
+      <fieldset><legend>DOMÍNIO MATEMÁTICO</legend><div class="option-grid domains"><label><input type="radio" name="domain" value="naturais" checked><span>Naturais<small>inteiros positivos</small></span></label><label><input type="radio" name="domain" value="inteiros"><span>Inteiros<small>inclui negativos</small></span></label><label><input type="radio" name="domain" value="racionais"><span>Racionais<small>números decimais</small></span></label><label><input type="radio" name="domain" value="irracionais"><span>Irracionais<small>π e e</small></span></label><label><input type="radio" name="domain" value="reais"><span>Reais<small>mistura de todos</small></span></label></div></fieldset></div>
+    <div class="actions"><button id="start" class="start-button" type="button">COMEÇAR TREINO <span>→</span></button><button id="show-history" class="outline-button" type="button">HISTÓRICO</button></div>
+  </section>
+  <section id="game" hidden><div class="stats"><div class="stat"><span class="stat-label">ACERTOS</span><strong id="correct-count">0</strong></div><div class="stat"><span class="stat-label">ERROS</span><strong id="wrong-count">0</strong></div><div class="stat"><span class="stat-label">PRECISÃO</span><strong id="accuracy">--%</strong></div><div class="stat"><span class="stat-label">RITMO</span><strong id="speed">-- <small>cpm</small></strong></div></div><section class="game-panel"><div class="game-timer"><div class="game-timer-label"><span>TEMPO RESTANTE</span><strong id="game-timer">03:00</strong></div><div class="timer-track"><div id="timer-progress" class="timer-progress"></div></div></div><div class="panel-heading"><span>EM ANDAMENTO</span><span id="problem-number">#01</span></div><div class="problem-area"><div id="question" class="question">—</div><div class="answer-row"><label class="sr-only" for="answer">Sua resposta</label><input id="answer" type="text" inputmode="none" autocomplete="off" placeholder="sua resposta"><button id="submit" class="submit-button" type="button">ENVIAR <span>↵</span></button></div><div id="keypad" class="keypad" aria-label="Teclado numérico"></div><p id="feedback" class="feedback">Resolva e envie sua resposta.</p></div><button id="game-start" class="start-button" type="button">ENCERRAR E VOLTAR <span>↩</span></button></section></section>
+  <section id="attempt-summary" class="attempt-summary" hidden><div class="intro"><p class="eyebrow">TREINO CONCLUÍDO</p><h2>Resumo da tentativa</h2><p id="attempt-summary-copy" class="intro-copy"></p></div><div id="attempt-current" class="result-grid attempt-current"></div><div class="comparison-panel"><div><span class="comparison-label">COMPARAÇÃO COM O HISTÓRICO</span><strong id="attempt-comparison-title">Primeira tentativa neste recorte</strong></div><div id="attempt-comparison" class="comparison-grid"></div></div><div class="actions attempt-actions"><button id="attempt-home" class="outline-button" type="button">IR PARA INÍCIO</button><button id="attempt-history" class="outline-button" type="button">VER HISTÓRICO</button><button id="attempt-repeat" class="start-button" type="button">REPETIR TREINO <span>↻</span></button></div></section>
+  <section id="history" hidden><div class="intro"><p class="eyebrow">SUA EVOLUÇÃO</p><h2>Histórico de tentativas</h2><p class="intro-copy">Os dados ficam salvos neste navegador.</p></div><div class="history-filters"><label>DOMÍNIO<select id="history-domain-filter"><option value="todos">Todos os domínios</option><option value="naturais">Naturais</option><option value="inteiros">Inteiros</option><option value="racionais">Racionais</option><option value="irracionais">Irracionais</option><option value="reais">Reais</option></select></label><label>DURAÇÃO<select id="history-duration-filter"><option value="todas">Todas as durações</option><option value="60">1 minuto</option><option value="180">3 minutos</option><option value="300">5 minutos</option><option value="600">10 minutos</option></select></label></div><div id="history-empty" class="empty">Nenhuma tentativa encontrada com esses filtros.</div><div id="history-content" hidden><div id="history-summary" class="result-grid history-summary"></div><div id="history-charts" class="history-charts"></div><div class="table-wrap"><table><thead><tr><th>Data</th><th>Domínio</th><th>Duração</th><th>Acertos</th><th>Erros</th><th>Precisão</th><th>Cálc/min</th></tr></thead><tbody id="history-table"></tbody></table></div></div><div class="actions"><button id="history-back" class="outline-button" type="button">VOLTAR</button><button id="export-history" class="outline-button" type="button">EXPORTAR (.JSON)</button><button id="export-csv" class="outline-button" type="button">EXPORTAR (.CSV)</button><button id="import-history" class="outline-button" type="button">IMPORTAR (.JSON)</button><button id="clear-history" class="outline-button danger" type="button">LIMPAR</button><input id="import-file" type="file" accept="application/json,.json" hidden></div><p id="history-feedback" class="feedback"></p></section>
+  <footer><span>treino curto · progresso real</span><span>ritmo mental / 002</span></footer>
+</main><script src="{{ url_for('static', filename='app.js') }}"></script></body></html>
